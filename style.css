@@ -1,0 +1,90 @@
+/* ==========================================================================
+   PORTAL AGROSUSTENTÁVEL - CUSTOM STYLES & ANIMATIONS
+   ========================================================================== */
+
+/* Variáveis globais para espelhar a paleta de cores do projeto */
+:root {
+    --agro-green: #1e4620;
+    --agro-light-green: #4c8c4a;
+    --agro-earth: #8c6239;
+    --agro-bg: #f9fafb;
+}
+
+/* 1. COMPORTAMENTO GLOBAL E ACESSIBILIDADE */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Customização da cor de seleção de texto */
+::selection {
+    background-color: var(--agro-light-green);
+    color: #ffffff;
+}
+
+/* Indicador visual de foco acessível para navegação por teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--agro-light-green);
+    outline-offset: 2px;
+}
+
+/* 2. CUSTOMIZANDO A BARRA DE ROLAGEM (SCROLLBAR) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e5e7eb; /* Cinza claro */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--agro-light-green);
+    border-radius: 9999px;
+    border: 2px solid #e5e7eb;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--agro-green);
+}
+
+/* 3. ANIMADOS E EFEITOS DE HOVER (MICROINTERAÇÕES) */
+
+/* Suaviza as transições de imagem de fundo do Tailwind */
+.bg-cover {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Efeito de zoom sutil ao passar o mouse nos cards de notícias */
+.group:hover .bg-cover,
+.bg-white:hover .bg-cover {
+    transform: scale(1.04);
+}
+
+/* Animação suave para o surgimento do conteúdo ao abrir o site (Fade-in) */
+@keyframes portalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main {
+    animation: portalFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 4. ANIMAÇÃO PARA O JAVASCRIPT (BOTÃO SALVAR) */
+@keyframes popIn {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
+
+/* Aplicado dinamicamente quando o usuário clica em "Ler Depois" */
+button[data-salvo="true"] {
+    animation: popIn 0.3s ease-in-out;
+}
